@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/mllick/spring-petclinic-microservices.git'
+                git branch: 'dev', url: 'https://github.com/mllick/spring-petclinic-microservices.git'
             }
         }
         
