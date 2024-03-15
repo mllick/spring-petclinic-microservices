@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    
+    tools{
+        jdk 'jdk17'
+        maven 'maven3'
+    }
+
+    stages {
+        stage('Git checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/mllick/spring-petclinic-microservices.git'
+            }
+        }
+        
+        stage('Compile') {
+            steps {
+                sh "mvn clean compile"
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh "mvn clean package -DskipTests=true"
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+        def services = ['spring-petclinic-admin-server', 'spring-petclinic-api-gateway', 'spring-petclinic-config-server', 'spring-petclinic-customers-service', 'spring-petclinic-discovery-server', 'spring-petclinic-vets-service', 'spring-petclinic-visits-service']
+        
+        services.each { service ->
+            sh "sudo cp /${service}/target/${service}-3.2.0.jar /usr/local/tomcat/webapps/petclinic"
+        }
+    }
+}
+    }
+}
