@@ -56,6 +56,19 @@
         <sonar.language>java</sonar.language>
     </properties>
 
+    <distributionManagement>
+  <repository>
+    <id>maven-releases</id>
+    <!-- CHANGE HERE by your team Nexus server -->
+    <url>http://localhost:8081/repository/maven-releases/</url>
+  </repository>
+  <snapshotRepository>
+    <id>maven-snapshots</id>
+    <!-- CHANGE HERE by your team Nexus server -->
+    <url>http://localhost:8081/repository/maven-releases/</url>
+  </snapshotRepository>
+</distributionManagement>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -235,5 +248,9 @@
             </build>
         </profile>
     </profiles>
-
+    <repository>
+  <id>maven-releases</id>
+  <name>maven-releases</name>
+  <url>http://localhost:8081/repository/maven-releases/</url>
+</repository>
 </project>
