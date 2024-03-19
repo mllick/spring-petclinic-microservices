@@ -62,6 +62,11 @@
             <name>maven-releases</name>
             <url>http://localhost:8081/repository/maven-releases/</url>
         </repository>
+         <repository>
+            <id>maven-releases</id>
+            <name>maven-releases</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
         <snapshotRepository>
             <id>maven-snapshots</id>
             <name>maven-snapshots</name>
@@ -249,15 +254,5 @@
             </build>
         </profile>
     </profiles>
-    <!-- Autres balises du POM -->
-
-    <distributionManagement>
-        <repository>
-            <id>maven-releases</id>
-            <name>maven-releases</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
-
-    <!-- Balises restantes du POM -->
+    
 </project>
